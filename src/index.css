@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cinzel: 'Cinzel', serif;
+    --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-montserrat);
+    background-color: #080808;
+    color: #e6e2da;
+  }
+
+  h1, h2, h3, .font-serif-luxury {
+    font-family: var(--font-cormorant);
+  }
+
+  .font-crest {
+    font-family: var(--font-cinzel);
+  }
+}
+
+/* Custom Luxury Utilities */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Gold foil & Metallic Gradients */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #dfba73 0%, #c5a059 40%, #9a7332 80%, #d8b269 100%);
+}
+
+.bg-gold-subtle {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(197, 160, 89, 0.05) 100%);
+}
+
+.bg-rose-gold-subtle {
+  background: linear-gradient(135deg, rgba(183, 110, 121, 0.15) 0%, rgba(74, 21, 37, 0.25) 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fcedbf 0%, #d4af37 40%, #aa8238 75%, #f5db99 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-rose-gold-gradient {
+  background: linear-gradient(135deg, #fcd5ce 0%, #d99b9b 50%, #b76e79 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-gold-glow {
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.15);
+}
+
+.border-gold-subtle {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+/* ==========================================================================
+   LUXURY BUTTONS & SHIMMER ANIMATIONS
+   ========================================================================== */
+
+/* Primary Gold Button with Continuous Luxury Light Sweep */
+.btn-gold-luxury {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #e8c887 0%, #c5a059 38%, #a07a38 75%, #dfba73 100%);
+  color: #080808;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -2px rgba(197, 160, 89, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+.btn-gold-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: all 0.75s ease-in-out;
+  pointer-events: none;
+}
+
+.btn-gold-luxury:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 30px -4px rgba(212, 175, 55, 0.7), 0 0 15px rgba(255, 255, 255, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.btn-gold-luxury:hover::before {
+  left: 180%;
+}
+
+.btn-gold-luxury:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 10px rgba(197, 160, 89, 0.3);
+}
+
+/* Secondary Obsidian / Metallic Border Outline Button */
+.btn-outline-luxury {
+  position: relative;
+  overflow: hidden;
+  background: rgba(18, 14, 10, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: #f0e6d6;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+  cursor: pointer;
+}
+
+.btn-outline-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.35) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: all 0.75s ease-in-out;
+  pointer-events: none;
+}
+
+.btn-outline-luxury:hover {
+  transform: translateY(-2px);
+  background: rgba(36, 26, 16, 0.95);
+  border-color: #dfba73;
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35), inset 0 0 12px rgba(212, 175, 55, 0.15);
+}
+
+.btn-outline-luxury:hover::before {
+  left: 180%;
+}
+
+.btn-outline-luxury:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Shimmering pulse badge */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.7);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+/* 3D Perspective container */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+/* Custom dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a251e;
+  border-radius: 4px;
+  border: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c5a059;
+}
