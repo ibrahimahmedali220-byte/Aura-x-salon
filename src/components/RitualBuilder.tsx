@@ -75,16 +75,16 @@ export const RitualBuilder: React.FC<RitualBuilderProps> = ({ onBookCustomRitual
             Curate Your Own <span className="italic text-gold-gradient font-light">Custom Itinerary</span>
           </h2>
 
-          <p className="text-sm sm:text-base text-[#b5a896] leading-relaxed font-light">
+          <p className="text-sm sm:text-base text-[#e0d6c7] leading-relaxed font-light">
             Harmonize multiple hair, dermal, and thermal spa rituals into a seamless single-visit sequence. Combining 2 or more offerings unlocks our 10% Alchemy Courtesy Privilege.
           </p>
         </div>
 
         {/* Builder Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Services Selector (7 Cols) */}
           <div className="lg:col-span-7 space-y-3">
-            <span className="text-xs uppercase tracking-widest text-[#d8cfc0] font-semibold block mb-2">
+            <span className="text-xs uppercase tracking-widest text-[#e8ded1] font-semibold block mb-2">
               Select Ritual Offerings to Combine:
             </span>
 
@@ -94,8 +94,17 @@ export const RitualBuilder: React.FC<RitualBuilderProps> = ({ onBookCustomRitual
                 return (
                   <div
                     key={service.id}
+                    role="checkbox"
+                    aria-checked={isSelected}
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === ' ' || e.key === 'Enter') {
+                        e.preventDefault();
+                        toggleService(service.id);
+                      }
+                    }}
                     onClick={() => toggleService(service.id)}
-                    className={`p-4 sm:p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center justify-between gap-4 ${
+                    className={`p-4 sm:p-5 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center justify-between gap-4 focus:outline-none focus:ring-2 focus:ring-[#c5a059] ${
                       isSelected
                         ? 'bg-[#1a140d] border-[#c5a059] shadow-[0_0_20px_rgba(197,160,89,0.2)]'
                         : 'bg-[#110d09] border-[#292015] hover:border-[#c5a059]/40 hover:bg-[#16100b]'
@@ -103,10 +112,10 @@ export const RitualBuilder: React.FC<RitualBuilderProps> = ({ onBookCustomRitual
                   >
                     <div className="flex items-center gap-4 min-w-0">
                       <div
-                        className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
+                        className={`w-7 h-7 rounded-lg border-2 flex items-center justify-center shrink-0 transition-all ${
                           isSelected
-                            ? 'bg-[#c5a059] border-[#c5a059] text-black'
-                            : 'border-[#3d2f20] text-transparent'
+                            ? 'bg-[#c5a059] border-[#c5a059] text-black shadow-md'
+                            : 'border-[#523f2b] bg-[#16100a] text-transparent'
                         }`}
                       >
                         <Check className="w-4 h-4 stroke-[3]" />
@@ -114,14 +123,14 @@ export const RitualBuilder: React.FC<RitualBuilderProps> = ({ onBookCustomRitual
 
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] uppercase tracking-wider text-[#c5a059] font-medium">
+                          <span className="text-xs uppercase tracking-wider text-[#dfba73] font-medium">
                             {service.category.toUpperCase()}
                           </span>
-                          <span className="text-xs text-[#8c7f6e]">• {service.duration}</span>
+                          <span className="text-xs text-[#b8ac9c]">• {service.duration}</span>
                         </div>
-                        <h4 className="text-sm sm:text-base font-semibold text-white truncate">
+                        <h3 className="text-sm sm:text-base font-semibold text-white truncate">
                           {service.name}
-                        </h4>
+                        </h3>
                       </div>
                     </div>
 

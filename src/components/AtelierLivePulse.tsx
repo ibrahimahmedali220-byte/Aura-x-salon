@@ -50,16 +50,16 @@ export const AtelierLivePulse: React.FC<AtelierLivePulseProps> = ({ onClaimSlot 
 
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] uppercase tracking-widest text-[#c5a059] font-bold">
+                <span className="text-xs text-[#c5a059] font-semibold tracking-wide">
                   Live Atelier Telemetry
                 </span>
-                <span className="text-xs text-[#8e806e] font-mono">
+                <span className="text-xs text-[#b8ac9c] font-mono">
                   (Beverly Hills: {currentTime || '9:45 AM PST'})
                 </span>
               </div>
-              <h3 className="font-cormorant text-xl sm:text-2xl text-white font-medium">
+              <h2 className="font-cormorant text-xl sm:text-2xl text-white font-medium">
                 Atelier Chair Pulse & Express Availability
-              </h3>
+              </h2>
             </div>
           </div>
 

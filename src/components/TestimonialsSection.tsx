@@ -100,14 +100,14 @@ export const TestimonialsSection: React.FC = () => {
                         className="w-14 h-14 rounded-full object-cover border-2 border-[#c5a059]/50 shadow-md"
                       />
                       <div>
-                        <h4 className="text-base font-semibold text-white tracking-wide">
+                        <h3 className="text-base font-semibold text-white tracking-wide">
                           {current.clientName}
-                        </h4>
-                        <div className="text-xs text-[#c5a059] font-light">
+                        </h3>
+                        <div className="text-xs text-[#dfba73] font-light">
                           {current.roleOrCity}
                         </div>
-                        <div className="text-[11px] text-[#8e8271] mt-0.5">
-                          Treatment: <span className="text-[#bfb2a0]">{current.service}</span> • {current.date}
+                        <div className="text-xs text-[#b8ac9c] mt-0.5">
+                          Treatment: <span className="text-[#e0d6c7]">{current.service}</span> • {current.date}
                         </div>
                       </div>
                     </div>

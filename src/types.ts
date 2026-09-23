@@ -152,3 +152,19 @@ export interface SuiteStatus {
   stylistName?: string;
   availableInMins?: number;
 }
+
+export interface BlogArticle {
+  id: string;
+  title: string;
+  subtitle: string;
+  excerpt: string;
+  content: string[];
+  category: 'Hair Artistry' | 'Skin Science' | 'Red Carpet' | 'Wellness';
+  author: string;
+  authorRole: string;
+  authorAvatar: string;
+  date: string;
+  readTime: string;
+  image: string;
+  tags: string[];
+}

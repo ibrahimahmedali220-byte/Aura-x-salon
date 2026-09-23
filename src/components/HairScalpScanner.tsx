@@ -138,10 +138,10 @@ export const HairScalpScanner: React.FC<HairScalpScannerProps> = ({
                 {scanState === 'idle' && (
                   <div className="relative z-20 text-center p-6 bg-[#120d08]/85 backdrop-blur-md rounded-2xl border border-[#3b2c1c] max-w-xs">
                     <Camera className="w-8 h-8 text-[#c5a059] mx-auto mb-3" />
-                    <h4 className="text-sm font-semibold text-white mb-1">
+                    <h3 className="text-sm font-semibold text-white mb-1">
                       Activate Optical Diagnostic
-                    </h4>
-                    <p className="text-[11px] text-[#a49685] mb-4">
+                    </h3>
+                    <p className="text-xs text-[#b8ac9c] mb-4">
                       Simulate a deep cellular scan of your hair fiber and follicle health.
                     </p>
                     <button
@@ -245,12 +245,12 @@ export const HairScalpScanner: React.FC<HairScalpScannerProps> = ({
             {/* Prescribed Formulation Card */}
             <div className="p-6 rounded-3xl bg-gradient-to-b from-[#181109] to-[#0d0905] border border-[#c5a059]/50 shadow-xl space-y-4">
               <div>
-                <span className="text-[10px] uppercase tracking-widest text-[#c5a059] font-bold block mb-1">
+                <span className="text-xs uppercase tracking-widest text-[#dfba73] font-bold block mb-1">
                   Atelier Prescription
                 </span>
-                <h4 className="font-cormorant text-2xl text-white font-medium">
+                <h3 className="font-cormorant text-2xl text-white font-medium">
                   Liquid Gold 24K Keratin & Bio-Peptide Seal
-                </h4>
+                </h3>
                 <p className="text-xs text-[#b8ac9b] font-light mt-1 leading-relaxed">
                   Infuses pure colloidal gold particles with Swiss apple stem cells into sensitized cuticles, compressing porosity scales by 94% for mirror-grade silk reflection.
                 </p>

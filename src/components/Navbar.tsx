@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Phone, Calendar, Menu, X, Clock, MapPin, UserCheck, Flame, Send, Crown, Video } from 'lucide-react';
+import { Sparkles, Phone, Calendar, Menu, X, Clock, MapPin, UserCheck, Flame, Send, Crown, Video, Search, UserPlus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SALON_INFO } from '../data/salonData';
 import { AmbientSoundscape } from './AmbientSoundscape';
@@ -7,6 +7,8 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { QuickCallbackModal } from './QuickCallbackModal';
 import { CurrencySwitcher } from './CurrencySwitcher';
 import { ExclusiveSmsAlertModal } from './ExclusiveSmsAlertModal';
+import { GlobalSearchBar } from './GlobalSearchBar';
+import { SalonService, Stylist, BlogArticle } from '../types';
 
 const WHATSAPP_CHANNEL_URL = 'https://whatsapp.com/channel/0029VbDjq2eBVJl7tp9j6J2b';
 
@@ -15,6 +17,10 @@ interface NavbarProps {
   onOpenArchive?: () => void;
   onOpenVipPass?: () => void;
   onOpenConsultation?: () => void;
+  onSelectService?: (service: SalonService) => void;
+  onSelectStylist?: (stylist: Stylist) => void;
+  onSelectArticle?: (article: BlogArticle) => void;
+  onOpenReferral?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -22,10 +28,15 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenArchive,
   onOpenVipPass,
   onOpenConsultation,
+  onSelectService,
+  onSelectStylist,
+  onSelectArticle,
+  onOpenReferral,
 }) => {
   const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,10 +82,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="w-4 h-4 rounded-full bg-[#2a1b0e] border border-[#c5a059]/40 flex items-center justify-center text-[#c5a059] group-hover:scale-110 group-hover:rotate-12 transition-transform">
               <MapPin className="w-2.5 h-2.5 text-[#e5c07b]" />
             </span>
-            <span className="text-[10px] lg:text-[11px] font-medium tracking-wider uppercase">
+            <span className="text-xs font-medium tracking-wide">
               Beverly Hills Atelier
             </span>
-            <span className="text-[9px] text-[#8f7e6c] group-hover:text-[#c5a059] transition-colors hidden xl:inline">
+            <span className="text-xs text-[#a39582] group-hover:text-[#c5a059] transition-colors hidden xl:inline">
               • 452 Royale Promenade
             </span>
           </a>
@@ -90,10 +101,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
             <Clock className="w-3 h-3 text-[#c5a059] group-hover:rotate-180 transition-transform duration-700" />
-            <span className="text-[10px] lg:text-[11px] font-medium tracking-wider uppercase">
+            <span className="text-xs font-medium tracking-wide">
               Tue–Sat 9AM–8PM
             </span>
-            <span className="px-1.5 py-0.5 rounded-full bg-[#162719] text-emerald-300 border border-emerald-500/30 text-[9px] font-semibold tracking-normal hidden 2xl:inline">
+            <span className="px-2 py-0.5 rounded-full bg-[#162719] text-emerald-300 border border-emerald-500/30 text-xs font-medium tracking-normal hidden 2xl:inline">
               Valet Ready
             </span>
           </a>
@@ -178,9 +189,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             : 'bg-gradient-to-b from-[#080808]/90 via-[#0a0705]/80 to-transparent py-4'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
           {/* Logo & Brand Crest */}
-          <a href="#" id="navbar-brand-logo" className="group flex items-center gap-3">
+          <a href="#" id="navbar-brand-logo" className="group flex items-center gap-3 shrink-0">
             <div className="w-10 h-10 rounded-full border border-[#c5a059]/60 flex items-center justify-center bg-gradient-to-br from-[#1b1712] to-[#0a0a0a] group-hover:border-[#c5a059] group-hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all">
               <span className="font-cinzel text-base font-bold text-[#c5a059]">A&D</span>
             </div>
@@ -194,26 +205,32 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-[13px] tracking-widest uppercase text-[#d6cec0] hover:text-[#c5a059] transition-colors relative py-1 group font-medium"
-              >
-                {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#c5a059] transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
-          </nav>
+          {/* Global Search Bar - Responsive in Navigation Header */}
+          <div className="hidden md:block flex-1 max-w-xs lg:max-w-sm xl:max-w-md mx-2">
+            <GlobalSearchBar
+              onSelectService={onSelectService}
+              onSelectStylist={onSelectStylist}
+              onSelectArticle={onSelectArticle}
+            />
+          </div>
 
-          {/* Right Action: Soundscape, Language & Book Appointment */}
+          {/* Navigation Controls & Action Buttons */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Mobile Search Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
+              aria-label="Toggle Global Search"
+              className="md:hidden p-2 rounded-full border border-[#3b2a1a] hover:border-[#c5a059] bg-[#140e08] text-[#c5a059] hover:text-white transition-colors cursor-pointer"
+              title="Search Services, Stylists, and Articles"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+
             <AmbientSoundscape />
-            <div className="md:hidden">
-              <LanguageSwitcher />
-            </div>
+
+            {/* Language Switcher (English, Hindi, Bangla) */}
+            <LanguageSwitcher showIconOnlyOnMobile={true} />
 
             <div className="hidden sm:flex items-center gap-3">
               {onOpenArchive && (
@@ -221,7 +238,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   type="button"
                   id="nav-beauty-archive-btn"
                   onClick={onOpenArchive}
-                  className="btn-outline-luxury px-4 py-2.5 rounded-full flex items-center gap-2 group text-xs cursor-pointer"
+                  className="btn-outline-luxury px-3.5 py-2 rounded-full flex items-center gap-1.5 group text-xs cursor-pointer"
                   title="Open Personal Beauty Archive & Treatment History"
                 >
                   <UserCheck className="w-3.5 h-3.5 text-[#c5a059] group-hover:scale-110 transition-transform" />
@@ -242,31 +259,58 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 id="navbar-reserve-btn"
                 onClick={onBookClick}
-                className="btn-gold-luxury px-6 py-2.5 rounded-full flex items-center gap-2 group text-xs"
+                className="btn-gold-luxury px-5 py-2 rounded-full flex items-center gap-2 group text-xs cursor-pointer"
               >
                 <Sparkles className="w-3.5 h-3.5 text-black group-hover:scale-110 group-hover:rotate-45 transition-transform duration-300" />
-                <span>{t('nav.bookAppointment', 'Book Appointment')}</span>
+                <span>{t('nav.bookAppointment', 'Book')}</span>
               </button>
             </div>
 
-            {/* Mobile Menu Toggle Button */}
+            {/* Menu Toggle Button (3-line hamburger menu for clean desktop/mobile layout) */}
             <button
               id="mobile-menu-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle Navigation"
-              className="lg:hidden p-2 rounded-lg text-[#d6cec0] hover:text-[#c5a059] hover:bg-[#1f1a14] transition-colors"
+              className="p-2 rounded-lg text-[#d6cec0] hover:text-[#c5a059] hover:bg-[#1f1a14] transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Slide-Out Menu */}
+        {/* Mobile Search Dropdown Bar (when mobile search icon clicked) */}
+        {mobileSearchOpen && (
+          <div className="md:hidden px-4 pt-3 pb-2 border-t border-[#261c12] bg-[#0c0906]/98 backdrop-blur-xl animate-in slide-in-from-top-2 duration-150">
+            <GlobalSearchBar
+              isMobileDrawer={true}
+              onSelectService={onSelectService}
+              onSelectStylist={onSelectStylist}
+              onSelectArticle={onSelectArticle}
+              onResultClick={() => setMobileSearchOpen(false)}
+            />
+          </div>
+        )}
+
+        {/* Slide-Out Navigation Menu Drawer */}
         {mobileMenuOpen && (
           <div
             id="mobile-nav-drawer"
-            className="lg:hidden bg-[#0a0a0a]/98 backdrop-blur-xl border-b border-[#c5a059]/30 px-6 py-8 mt-3 shadow-2xl transition-all"
+            className="bg-[#0a0a0a]/98 backdrop-blur-xl border-b border-[#c5a059]/30 px-6 py-8 mt-3 shadow-2xl transition-all max-w-7xl mx-auto"
           >
+            {/* Global Search Bar inside Drawer */}
+            <div className="mb-6">
+              <span className="text-[10px] uppercase tracking-widest text-[#c5a059] font-bold block mb-2">
+                Quick Atelier Search
+              </span>
+              <GlobalSearchBar
+                isMobileDrawer={true}
+                onSelectService={onSelectService}
+                onSelectStylist={onSelectStylist}
+                onSelectArticle={onSelectArticle}
+                onResultClick={() => setMobileMenuOpen(false)}
+              />
+            </div>
+
             <div className="flex flex-col gap-4 mb-6">
               {navLinks.map((link) => (
                 <a
@@ -308,6 +352,21 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span>Book Appointment</span>
               </button>
 
+              {onOpenReferral && (
+                <button
+                  type="button"
+                  id="mobile-drawer-refer-btn"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenReferral();
+                  }}
+                  className="w-full py-2.5 px-3 rounded-full bg-[#1b120a] hover:bg-[#281b0f] border border-[#c5a059]/50 text-[#ffd700] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                >
+                  <UserPlus className="w-3.5 h-3.5 text-[#ffd700]" />
+                  <span>Refer a Friend & Earn 500 PTS</span>
+                </button>
+              )}
+
               <div className="flex gap-2 pt-2">
                 <a
                   href={`tel:${SALON_INFO.phone}`}
@@ -329,6 +388,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               <div className="pt-2">
                 <ExclusiveSmsAlertModal />
+              </div>
+
+              <div className="pt-3 border-t border-[#1c1813] flex items-center justify-between">
+                <span className="text-xs text-[#8f8270] uppercase tracking-wider">Atmospheric Audio</span>
+                <AmbientSoundscape />
               </div>
 
               <div className="pt-3 border-t border-[#1c1813] flex items-center justify-between">

@@ -40,7 +40,7 @@ export const QuickCallbackModal: React.FC = () => {
         type="button"
         id="topbar-fasttrack-callback-btn"
         onClick={() => setIsOpen(true)}
-        className="group relative inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#22160c] via-[#2d1d10] to-[#1a1109] border border-[#c5a059]/60 hover:border-[#f5d796] text-[#f7ebd4] hover:text-white text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase transition-all duration-300 shadow-[0_0_12px_rgba(212,175,55,0.25)] hover:shadow-[0_0_22px_rgba(212,175,55,0.5)] hover:scale-[1.03] cursor-pointer"
+        className="group relative inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#22160c] via-[#2d1d10] to-[#1a1109] border border-[#c5a059]/60 hover:border-[#f5d796] text-[#f7ebd4] hover:text-white text-xs font-medium tracking-wide transition-all duration-300 shadow-[0_0_12px_rgba(212,175,55,0.25)] hover:shadow-[0_0_22px_rgba(212,175,55,0.5)] hover:scale-[1.03] cursor-pointer"
         title="Request Fast-Track 5-Min Concierge Call"
       >
         <span className="relative flex h-2 w-2 shrink-0">
@@ -48,7 +48,7 @@ export const QuickCallbackModal: React.FC = () => {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-[#d4af37]" />
         </span>
         <PhoneCall className="w-3 h-3 text-[#d4af37] group-hover:rotate-12 transition-transform duration-300" />
-        <span className="tracking-wider">Fast-Track Callback</span>
+        <span className="tracking-wide">Fast-Track Callback</span>
       </button>
 
       {/* Modal */}

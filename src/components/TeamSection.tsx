@@ -134,11 +134,11 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ onSelectStylistForBook
                       </p>
 
                       {/* Accolades */}
-                      <div className="space-y-1.5 pt-3 border-t border-[#1f1710]">
+                      <div className="space-y-2 pt-3 border-t border-[#1f1710]">
                         {stylist.awards.map((award, i) => (
-                          <div key={i} className="flex items-center gap-1.5 text-[11px] text-[#e0d6c7]">
-                            <Award className="w-3.5 h-3.5 text-[#c5a059] shrink-0" />
-                            <span className="truncate">{award}</span>
+                          <div key={i} className="flex items-start gap-2 text-xs text-[#e0d6c7]">
+                            <Award className="w-3.5 h-3.5 text-[#c5a059] shrink-0 mt-0.5" />
+                            <span className="leading-snug break-words">{award}</span>
                           </div>
                         ))}
                       </div>

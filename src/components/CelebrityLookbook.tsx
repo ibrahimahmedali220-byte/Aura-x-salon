@@ -111,19 +111,25 @@ export const CelebrityLookbook: React.FC<CelebrityLookbookProps> = ({ onBookLook
 
         {/* Filter Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
-          {(['all', 'Met Gala', 'Cannes', 'Oscars', 'Venice'] as const).map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-4 py-1.5 rounded-full text-xs uppercase tracking-wider transition-all cursor-pointer ${
-                activeFilter === filter
-                  ? 'bg-gradient-to-r from-[#c5a059] to-[#dfba73] text-black font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)]'
-                  : 'bg-[#140e08] text-[#a0907e] border border-[#2a1d12] hover:border-[#c5a059]/50 hover:text-white'
-              }`}
-            >
-              {filter === 'all' ? 'All Red Carpet Looks' : filter}
-            </button>
-          ))}
+          {(['all', 'Met Gala', 'Cannes', 'Oscars', 'Venice'] as const).map((filter) => {
+            const isSelected = activeFilter === filter;
+            return (
+              <button
+                key={filter}
+                type="button"
+                aria-pressed={isSelected}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-4 py-2 rounded-full text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 ${
+                  isSelected
+                    ? 'bg-gradient-to-r from-[#ffe49e] via-[#dfba73] to-[#c5a059] text-[#0a0704] font-bold ring-2 ring-[#ffe49e] shadow-[0_0_20px_rgba(243,203,117,0.55)] scale-105'
+                    : 'bg-[#140e08] text-[#c4b9a8] border border-[#2a1d12] hover:border-[#c5a059]/60 hover:text-white'
+                }`}
+              >
+                {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-black shrink-0" />}
+                <span>{filter === 'all' ? 'All Red Carpet Looks' : filter}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Lookbook Grid */}

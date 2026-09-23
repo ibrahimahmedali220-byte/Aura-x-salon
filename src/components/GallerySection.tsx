@@ -110,13 +110,13 @@ export const GallerySection: React.FC = () => {
 
                     {/* Caption Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                      <span className="text-[10px] uppercase tracking-widest text-[#c5a059] font-medium block mb-1">
+                      <span className="text-xs uppercase tracking-widest text-[#dfba73] font-medium block mb-1">
                         {item.category.toUpperCase()}
                       </span>
-                      <h4 className="font-cormorant text-xl text-white font-medium leading-tight">
+                      <h3 className="font-cormorant text-xl text-white font-medium leading-tight">
                         {item.title}
-                      </h4>
-                      <p className="text-[11px] text-[#b8ad9d] font-light line-clamp-2 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      </h3>
+                      <p className="text-xs text-[#d6cec0] font-light line-clamp-2 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         {item.description}
                       </p>
                     </div>

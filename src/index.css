@@ -5,12 +5,20 @@
     --font-cinzel: 'Cinzel', serif;
     --font-cormorant: 'Cormorant Garamond', Georgia, serif;
     --font-montserrat: 'Montserrat', sans-serif;
+
+    /* Semantic Design Tokens for Accessibility & Usability */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #e6ded1;
+    --color-text-muted: #b8ac9c;
+    --color-text-gold: #dfba73;
+    --color-text-gold-light: #fcedbf;
+    --color-border-luxury: rgba(197, 160, 89, 0.3);
   }
 
   body {
     font-family: var(--font-montserrat);
     background-color: #080808;
-    color: #e6e2da;
+    color: var(--color-text-secondary);
   }
 
   h1, h2, h3, .font-serif-luxury {
@@ -163,6 +171,39 @@
 
 .btn-outline-luxury:active {
   transform: translateY(1px) scale(0.98);
+}
+
+/* Standardized Filter Buttons */
+.btn-pill-filter {
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.08em;
+  background-color: #140e08;
+  color: #c4b9a8;
+  border: 1px solid #2d2014;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.btn-pill-filter:hover {
+  border-color: rgba(197, 160, 89, 0.5);
+  color: #ffffff;
+}
+
+.btn-pill-filter-active {
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #f5d796 0%, #dfba73 50%, #c5a059 100%);
+  color: #080808;
+  border: 1px solid #ffd885;
+  box-shadow: 0 0 20px rgba(223, 186, 115, 0.45);
+  cursor: pointer;
 }
 
 /* Shimmering pulse badge */

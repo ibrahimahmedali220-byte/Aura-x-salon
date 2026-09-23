@@ -49,7 +49,7 @@ export const ContactSection: React.FC = () => {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-xs uppercase tracking-widest text-[#d8cfc0] font-semibold mb-1">
+                    <h3 className="text-sm font-semibold text-[#e8ded1] mb-1">
                       Promenade Address
                     </h3>
                     <p className="text-sm text-[#e6ded0] font-light leading-relaxed">
@@ -67,7 +67,7 @@ export const ContactSection: React.FC = () => {
                     <Clock className="w-5 h-5" />
                   </div>
                   <div className="space-y-1 text-xs text-[#b8ac9c]">
-                    <h3 className="text-xs uppercase tracking-widest text-[#d8cfc0] font-semibold mb-1">
+                    <h3 className="text-sm font-semibold text-[#e8ded1] mb-1">
                       Hours of Operation
                     </h3>
                     <p>{SALON_INFO.hours.weekdays}</p>
@@ -80,7 +80,7 @@ export const ContactSection: React.FC = () => {
                 <div className="pt-4 border-t border-[#201811] flex flex-col sm:flex-row gap-3">
                   <a
                     href={`tel:${SALON_INFO.phone}`}
-                    className="flex-1 py-3 px-4 rounded-xl bg-[#1c1610] hover:bg-[#c5a059] text-[#e8ded1] hover:text-black border border-[#c5a059]/30 text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-all"
+                    className="flex-1 py-3 px-4 rounded-xl bg-[#1c1610] hover:bg-[#c5a059] text-[#e8ded1] hover:text-black border border-[#c5a059]/30 text-xs font-semibold flex items-center justify-center gap-2 transition-all"
                   >
                     <Phone className="w-4 h-4" />
                     <span>Call Concierge</span>
@@ -90,7 +90,7 @@ export const ContactSection: React.FC = () => {
                     href={SALON_INFO.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-3 px-4 rounded-xl bg-emerald-700/30 hover:bg-emerald-600 text-emerald-300 hover:text-white border border-emerald-500/40 text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-all"
+                    className="flex-1 py-3 px-4 rounded-xl bg-emerald-700/30 hover:bg-emerald-600 text-emerald-300 hover:text-white border border-emerald-500/40 text-xs font-semibold flex items-center justify-center gap-2 transition-all"
                   >
                     <MessageSquare className="w-4 h-4" />
                     <span>WhatsApp VIP</span>
@@ -101,7 +101,7 @@ export const ContactSection: React.FC = () => {
 
             {/* Quick Inquiry Form */}
             <div className="p-7 rounded-2xl bg-[#120e0a] border border-[#2b2116]">
-              <h3 className="text-xs uppercase tracking-widest text-[#d8cfc0] font-semibold mb-2 flex items-center gap-2">
+              <h3 className="text-sm font-semibold text-[#e8ded1] mb-2 flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#c5a059]" />
                 Direct Concierge Inquiry
               </h3>

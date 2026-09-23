@@ -14,10 +14,10 @@ export const PressRibbon: React.FC = () => {
               <Award className="w-4 h-4" />
             </div>
             <div>
-              <span className="text-[10px] tracking-[0.25em] uppercase text-[#c5a059] font-bold block">
+              <span className="text-xs tracking-[0.2em] uppercase text-[#c5a059] font-bold block">
                 Cannes Official Partner
               </span>
-              <span className="text-[11px] text-[#8e8271]">
+              <span className="text-xs text-[#b8ac9c]">
                 Haute Coiffure Française Accredited
               </span>
             </div>
@@ -30,12 +30,12 @@ export const PressRibbon: React.FC = () => {
             {EDITORIAL_PRESS.map((item, idx) => (
               <div key={idx} className="flex flex-col justify-center">
                 <div className="flex items-center gap-1.5 mb-1">
-                  <span className="text-[11px] font-cinzel font-bold tracking-widest text-[#f5ebd7]">
+                  <span className="text-xs font-cinzel font-bold tracking-widest text-[#f5ebd7]">
                     {item.publication}
                   </span>
-                  <span className="text-[9px] text-[#c5a059]">• {item.year}</span>
+                  <span className="text-xs text-[#c5a059]">• {item.year}</span>
                 </div>
-                <p className="text-[11px] text-[#9c907f] italic font-light line-clamp-2 leading-relaxed">
+                <p className="text-xs text-[#b8ac9c] italic font-light line-clamp-2 leading-relaxed">
                   {item.quote}
                 </p>
               </div>

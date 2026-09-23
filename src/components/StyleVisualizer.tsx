@@ -694,12 +694,12 @@ export const StyleVisualizer: React.FC<StyleVisualizerProps> = ({ onBookLook }) 
             {/* Recommended Salon Ritual Card & Direct Booking CTA */}
             <div className="p-6 rounded-3xl bg-gradient-to-b from-[#18110b] to-[#0e0a06] border border-[#c5a059]/40 space-y-4 shadow-xl">
               <div>
-                <span className="text-[10px] uppercase tracking-widest text-[#c5a059] font-bold block mb-1">
+                <span className="text-xs uppercase tracking-widest text-[#dfba73] font-bold block mb-1">
                   Matching Atelier Ritual
                 </span>
-                <h4 className="font-cormorant text-2xl text-white font-medium">
+                <h3 className="font-cormorant text-2xl text-white font-medium">
                   {activeTab === 'hair' ? selectedHairFilter.serviceName : selectedMakeupFilter.serviceName}
-                </h4>
+                </h3>
                 <p className="text-xs text-[#b8ac9b] font-light mt-1 leading-relaxed">
                   {activeTab === 'hair' ? selectedHairFilter.description : selectedMakeupFilter.description}
                 </p>
@@ -707,7 +707,7 @@ export const StyleVisualizer: React.FC<StyleVisualizerProps> = ({ onBookLook }) 
 
               <div className="p-3.5 rounded-2xl bg-[#120d08] border border-[#241a10] flex items-center justify-between text-xs">
                 <div>
-                  <span className="text-[10px] text-[#807261] uppercase tracking-wider block">
+                  <span className="text-xs text-[#a39582] uppercase tracking-wider block">
                     Recommended Director
                   </span>
                   <span className="text-white font-medium">
@@ -715,7 +715,7 @@ export const StyleVisualizer: React.FC<StyleVisualizerProps> = ({ onBookLook }) 
                   </span>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] text-[#807261] uppercase tracking-wider block">
+                  <span className="text-xs text-[#a39582] uppercase tracking-wider block">
                     Investment
                   </span>
                   <span className="font-cinzel text-base text-gold-gradient font-bold">
@@ -724,22 +724,22 @@ export const StyleVisualizer: React.FC<StyleVisualizerProps> = ({ onBookLook }) 
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="space-y-2.5 pt-1">
+              {/* Action Buttons with clear visual hierarchy */}
+              <div className="space-y-3 pt-2">
                 <button
                   type="button"
                   onClick={handleBookCurrentLook}
-                  className="btn-gold-luxury w-full py-4 rounded-full text-xs flex items-center justify-center gap-2"
+                  className="btn-gold-luxury w-full py-4 rounded-full text-xs flex items-center justify-center gap-2 shadow-lg"
                 >
                   <Sparkles className="w-4 h-4 text-black" />
-                  <span>Book This Look at Atelier</span>
+                  <span className="font-bold">Book This Look at Atelier</span>
                   <ArrowRight className="w-3.5 h-3.5 text-black" />
                 </button>
 
                 <button
                   type="button"
                   onClick={handleSaveLookToArchive}
-                  className="btn-outline-luxury w-full py-3 rounded-full text-xs flex items-center justify-center gap-2 cursor-pointer"
+                  className="btn-outline-luxury w-full py-3 rounded-full text-xs flex items-center justify-center gap-2 cursor-pointer opacity-90 hover:opacity-100"
                 >
                   <Bookmark className="w-3.5 h-3.5 text-[#c5a059]" />
                   <span>Save Look to Personal Beauty Archive</span>

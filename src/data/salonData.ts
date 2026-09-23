@@ -1,4 +1,4 @@
-import { SalonService, Stylist, VIPPackage, Testimonial, GalleryItem, BeforeAfterItem, MembershipTier, ApothecaryProduct } from '../types';
+import { SalonService, Stylist, VIPPackage, Testimonial, GalleryItem, BeforeAfterItem, MembershipTier, ApothecaryProduct, BlogArticle } from '../types';
 
 export const SALON_INFO = {
   name: "AURA & D'OR",
@@ -512,5 +512,108 @@ export const APOTHECARY_PRODUCTS: ApothecaryProduct[] = [
     image: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=600&auto=format&fit=crop',
     description: 'Formed by rapidly cooled volcanic lava, this dual-edge architectural gua sha drains sluggish lymphatic congestion, sculpts jawline contours, and releases deep facial fascia.',
     keyIngredients: ['100% Genuine Volcanic Obsidian', 'Polished Dual-Bevel Contours', 'Velvet Storage Pouch']
+  }
+];
+
+export const EDITORIAL_BLOG_ARTICLES: BlogArticle[] = [
+  {
+    id: 'art-24k-gold-science',
+    title: 'The Cellular Alchemy of 24K Gold in Dermal Aesthetics',
+    subtitle: 'How colloidal nanogold promotes microcirculation and collagen synthesis',
+    excerpt: 'Exploring the regenerative bio-conductivity of pure 24-karat gold sheets and how ultrasonic waves drive precious peptides deep into the cutaneous membrane.',
+    content: [
+      'Gold has captivated ancient civilizations from Egyptian dynasties to Imperial dynastic courts as the quintessential emblem of divine vitality. In contemporary aesthetic medicine and luxury dermatological care, the focus has shifted from symbolic reverence to cellular biochemistry.',
+      'When pure 24-karat gold is milled into colloidal nano-particles, it displays profound anti-inflammatory and antioxidant properties. Colloidal gold acts as an electron donor, neutralizing destructive reactive oxygen species (ROS) produced by ultraviolet radiation and urban atmospheric pollution.',
+      'At AURA & D’OR, our Imperial 24K Gold Cellular Lifting Facial pairs certified Swiss gold foil with medical-grade ultrasound cavitation. This vibrational acoustic field creates transient micro-channels in the stratum corneum, enabling marine collagen tri-peptides to penetrate five times deeper than topical applications.',
+      'The clinical result is immediate and noticeable: accelerated lymphatic drainage, reduced puffiness around delicate ocular margins, and a distinct porcelain radiance that lasts for weeks.'
+    ],
+    category: 'Skin Science',
+    author: 'Helena Vane-Kensington',
+    authorRole: 'Head Aesthetician & Facial Sculptor',
+    authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop',
+    date: 'September 18, 2026',
+    readTime: '4 min read',
+    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1000&auto=format&fit=crop',
+    tags: ['24K Gold', 'Facial Sculpting', 'Cellular Skincare', 'Anti-Aging']
+  },
+  {
+    id: 'art-haute-balayage',
+    title: 'Architectural Balayage: French Freehand Chromatic Artistry',
+    subtitle: 'Tailoring multidimensional light to facial bone curvature and skin undertones',
+    excerpt: 'True luxury balayage is never formulaic. Artistic Director Johnathan Cole reveals how bespoke micro-placement elevates facial symmetry and eliminates harsh demarcation.',
+    content: [
+      'The French term "balayer" translates to "to sweep." Unlike traditional foils that enforce rigid, symmetrical horizontal rows, authentic architectural balayage approaches every crown of hair as an individualized canvas.',
+      'The key to red-carpet distinction lies in understanding bone structure. By placing brighter chromatic ribbons around the zygomatic arches and jawline, we reflect natural ambient light upward, creating an optical contouring effect akin to soft-focus studio illumination.',
+      'Our color formulations at AURA & D’OR eschew ammonia and heavy silicones in favor of organic cold-pressed camellia seed oil and caviar protein extracts. This shields the hair fiber during melanin dispersion, ensuring the cuticle remains glass-smooth.',
+      'Maintenance is effortless. Because hand-painted gradients seamlessly meld into natural roots, regrowth remains pristine and elegant for up to six months without high-maintenance salon visits.'
+    ],
+    category: 'Hair Artistry',
+    author: 'Johnathan Cole',
+    authorRole: 'Artistic Director & Master Colorist',
+    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop',
+    date: 'September 12, 2026',
+    readTime: '5 min read',
+    image: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1000&auto=format&fit=crop',
+    tags: ['Balayage', 'Hair Color', 'Hair Architecture', 'Caviar Glaze']
+  },
+  {
+    id: 'art-red-carpet-prep',
+    title: 'Confidential Protocols: Preparing Hair for Cannes & The Met Gala',
+    subtitle: 'Behind-the-scenes techniques for 16-hour humidity resistance and flawless camera poise',
+    excerpt: 'Celebrity stylist Roberto Valente shares the secret layering protocols that keep haute couture hairstyles immaculate under intense high-definition flash photography.',
+    content: [
+      'When styling for the Cannes red carpet or the Met Gala staircase, ordinary setting sprays and styling gels simply fail. The combination of intense paparazzi strobes, humidity, and hours of movement requires an uncompromising architectural approach.',
+      'The secret begins 48 hours prior with our Liquid Gold 24K Keratin treatment. By sealing the outer lipid layer with bio-compatible silk keratin, hair is rendered virtually immune to ambient moisture fluctuations.',
+      'On the day of the gala, Roberto employs directional thermal pinning. Each wave is sculpted with customized Japanese ceramic tools and allowed to cool while anchored in velvet-cushioned clips. This sets the hydrogen bonds permanently in place before any hairspray touches the strand.',
+      'The crowning finish is our ultra-fine Damascene Rose & White Truffle mist, delivering weightless, light-refracting luminescence without stiffness or residue.'
+    ],
+    category: 'Red Carpet',
+    author: 'Roberto Valente',
+    authorRole: 'Celebrity Hair Stylist & Keratin Specialist',
+    authorAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop',
+    date: 'September 5, 2026',
+    readTime: '4 min read',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1000&auto=format&fit=crop',
+    tags: ['Red Carpet', 'Keratin', 'Celebrity Styling', 'Met Gala']
+  },
+  {
+    id: 'art-phyto-stem-cells',
+    title: 'Swiss Phyto-Stem Cells: The New Frontier in Follicle Regeneration',
+    subtitle: 'Unlocking dormant follicular vitality with rare Uttwiler Spätlauber apple culture',
+    excerpt: 'Discover why high-frequency microcurrent scalp oxygenation combined with epigenetic plant stem cells is reversing follicular thinning for our distinguished clientele.',
+    content: [
+      'Hair density and luster are fundamentally governed by the health of the scalp micro-biome and the dermal papilla stem cells nestled at the base of each follicle. With age, hormonal flux, and oxidative stress, these cells slow their regenerative cycle.',
+      'In our Swiss Botanical Scalp Sanctuary, we utilize extracts derived from the rare Swiss apple variety Uttwiler Spätlauber, renowned for its extraordinary storage longevity and rich epigenetic longevity factors.',
+      'Clinical studies demonstrate that these botanical stem cells protect human follicular cells from premature apoptosis. Combined with cold-plasma oxygenation and microcurrent scalp stimulation, blood circulation to dormant follicles increases by up to 140%.',
+      'Within three sessions, clients experience reduced shedding, increased strand diameter, and a revitalized scalp foundation primed for robust growth.'
+    ],
+    category: 'Wellness',
+    author: 'Helena Vane-Kensington',
+    authorRole: 'Head Aesthetician & Facial Sculptor',
+    authorAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop',
+    date: 'August 28, 2026',
+    readTime: '6 min read',
+    image: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=1000&auto=format&fit=crop',
+    tags: ['Stem Cells', 'Scalp Detox', 'Hair Loss Prevention', 'Swiss Botany']
+  },
+  {
+    id: 'art-royal-bridal-couture',
+    title: 'The Art of Royal Bridal Makeover: Camera-Ready Poise',
+    subtitle: 'Curating waterproof HD airbrush artistry and bespoke veil draping',
+    excerpt: 'Master Bridal Artist Soraya Al-Mirza details the rigorous preparation timeline required for royal and society weddings that span 14 hours of celebration.',
+    content: [
+      'A luxury bride demands makeup that appears whisper-light in daylight intimate moments, yet radiates with sculptural definition under high-intensity photography and evening ballroom candelabras.',
+      'Soraya begins bridal prep months in advance with gentle lymphatic sculpt sessions to ensure natural bone definition. On the wedding morning, medical-grade micro-fine airbrushing deposits micronized pigment droplets that fuse with the skin rather than sitting on top of it.',
+      'This creates a velvety, sweat-resistant, tear-resistant barrier that will not oxidize, cake, or migrate throughout emotional vows or celebratory dances.',
+      'From custom-designed Swarovski hairpins to handcrafted silk lash extensions calibrated to the bride’s eye curvature, every detail is orchestrated with regal poise.'
+    ],
+    category: 'Red Carpet',
+    author: 'Soraya Al-Mirza',
+    authorRole: 'Master Bridal Makeup Artist',
+    authorAvatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&auto=format&fit=crop',
+    date: 'August 15, 2026',
+    readTime: '4 min read',
+    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1000&auto=format&fit=crop',
+    tags: ['Bridal', 'Airbrush Makeup', 'Wedding Glamour', 'Veil Styling']
   }
 ];

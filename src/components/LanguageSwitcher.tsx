@@ -12,9 +12,18 @@ interface LanguageOption {
 const LANGUAGES: LanguageOption[] = [
   { code: 'en', label: 'English', nativeLabel: 'English', flag: '🇬🇧' },
   { code: 'hi', label: 'Hindi', nativeLabel: 'हिंदी', flag: '🇮🇳' },
+  { code: 'bn', label: 'Bangla', nativeLabel: 'বাংলা', flag: '🇧🇩' },
 ];
 
-export const LanguageSwitcher: React.FC = () => {
+interface LanguageSwitcherProps {
+  className?: string;
+  showIconOnlyOnMobile?: boolean;
+}
+
+export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
+  className = '',
+  showIconOnlyOnMobile = false,
+}) => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -41,26 +50,29 @@ export const LanguageSwitcher: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative inline-block text-left" ref={containerRef}>
+    <div className={`relative inline-block text-left ${className}`} ref={containerRef}>
       <button
         type="button"
         id="luxury-language-switcher-btn"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#3d2c1b] hover:border-[#c5a059] bg-gradient-to-r from-[#17110a] to-[#120d07] hover:bg-[#20150d] transition-all duration-300 text-[11px] text-[#e2d6c4] hover:text-white cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(212,175,55,0.25)] hover:scale-[1.02] group"
-        title="Select Language / भाषा चुनें / Choisir la langue"
+        aria-label="Select Language"
+        aria-expanded={isOpen}
+        className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#3d2c1b] hover:border-[#c5a059] bg-gradient-to-r from-[#17110a] to-[#120d07] hover:bg-[#20150d] transition-all duration-300 text-xs text-[#e2d6c4] hover:text-white cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(212,175,55,0.25)] hover:scale-[1.02] group"
+        title="Select Language / भाषा चुनें / ভাষা নির্বাচন করুন"
       >
         <span className="text-xs group-hover:scale-110 transition-transform">{currentLang.flag}</span>
-        <Globe className="w-3 h-3 text-[#c5a059] group-hover:rotate-45 transition-transform duration-500" />
-        <span className="text-[11px] font-medium tracking-wide text-[#f2e6d6]">
+        <Globe className="w-3.5 h-3.5 text-[#c5a059] group-hover:rotate-45 transition-transform duration-500" />
+        <span className={`text-xs font-medium tracking-wide text-[#f2e6d6] ${showIconOnlyOnMobile ? 'hidden sm:inline' : ''}`}>
           {currentLang.nativeLabel}
         </span>
         <ChevronDown className={`w-3 h-3 text-[#a89a87] group-hover:text-[#c5a059] transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#c5a059]' : ''}`} />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-44 rounded-2xl bg-[#140e0a] border border-[#c5a059]/50 shadow-[0_15px_40px_rgba(0,0,0,0.85)] backdrop-blur-xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
-          <div className="px-3 py-1.5 border-b border-[#251b12] text-[10px] uppercase tracking-widest text-[#8a7a67] font-semibold">
-            Select Language
+        <div className="absolute right-0 mt-2 w-48 rounded-2xl bg-[#140e0a] border border-[#c5a059]/50 shadow-[0_15px_40px_rgba(0,0,0,0.85)] backdrop-blur-xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+          <div className="px-3 py-1.5 border-b border-[#251b12] text-[10px] uppercase tracking-widest text-[#c5a059] font-semibold flex items-center justify-between">
+            <span>Language / ভাষা</span>
+            <span className="text-[9px] text-[#8a7a67]">i18n</span>
           </div>
           <div className="py-1">
             {LANGUAGES.map((lang) => {
@@ -72,14 +84,14 @@ export const LanguageSwitcher: React.FC = () => {
                   onClick={() => handleSelectLanguage(lang.code)}
                   className={`w-full px-3 py-2 text-left flex items-center justify-between text-xs transition-colors cursor-pointer ${
                     isSelected
-                      ? 'bg-[#26190f] text-[#f5ebd7] font-medium'
+                      ? 'bg-[#26190f] text-[#dfba73] font-medium'
                       : 'text-[#bbb09f] hover:bg-[#1a120b] hover:text-white'
                   }`}
                 >
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-2.5">
                     <span className="text-sm">{lang.flag}</span>
-                    <span>{lang.nativeLabel}</span>
-                    <span className="text-[10px] text-[#7d6f5e] font-light">({lang.label})</span>
+                    <span className="font-medium text-white">{lang.nativeLabel}</span>
+                    <span className="text-[10px] text-[#8a7a67]">({lang.label})</span>
                   </span>
                   {isSelected && <Check className="w-3.5 h-3.5 text-[#c5a059]" />}
                 </button>

@@ -30,10 +30,12 @@ import {
 
 interface SovereignRewardsProps {
   onApplyVoucherToBooking?: (voucherCode: string) => void;
+  onOpenReferral?: () => void;
 }
 
 export const SovereignRewards: React.FC<SovereignRewardsProps> = ({
-  onApplyVoucherToBooking
+  onApplyVoucherToBooking,
+  onOpenReferral
 }) => {
   const [profile, setProfile] = useState<LoyaltyProfile>(() => getLoyaltyProfile());
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'experience' | 'apothecary'>('all');
@@ -211,37 +213,66 @@ export const SovereignRewards: React.FC<SovereignRewardsProps> = ({
             {
               title: 'Haute Salon Rituals',
               pts: '10 Pts / $1',
-              desc: 'Automatically accrued on hair couture, skin aesthetics, and spa rituals.'
+              desc: 'Automatically accrued on hair couture, skin aesthetics, and spa rituals.',
+              isReferral: false
             },
             {
               title: 'VIP Companion Referral',
               pts: '500 Pts',
-              desc: 'Awarded when introducing a discerning friend to our sanctuary.'
+              desc: 'Awarded when introducing a discerning friend to our sanctuary.',
+              isReferral: true
             },
             {
               title: 'Editorial Review',
               pts: '250 Pts',
-              desc: 'Granted for verified feedback on Google or editorial publications.'
+              desc: 'Granted for verified feedback on Google or editorial publications.',
+              isReferral: false
             },
             {
               title: 'Patron Anniversary',
               pts: '1,000 Pts',
-              desc: 'Complimentary celebration credit bestowed every calendar year.'
+              desc: 'Complimentary celebration credit bestowed every calendar year.',
+              isReferral: false
             }
           ].map((pillar, i) => (
             <div
               key={i}
-              className="p-5 rounded-2xl bg-[#0f0b07] border border-[#261c12] hover:border-[#c5a059]/40 transition-colors"
+              className={`p-5 rounded-2xl bg-[#0f0b07] border transition-all flex flex-col justify-between ${
+                pillar.isReferral
+                  ? 'border-[#c5a059]/60 shadow-[0_0_20px_rgba(212,175,55,0.15)] bg-gradient-to-b from-[#171009] to-[#0f0b07]'
+                  : 'border-[#261c12] hover:border-[#c5a059]/40'
+              }`}
             >
-              <div className="font-cinzel text-lg text-gold-gradient font-bold mb-1">
-                {pillar.pts}
+              <div>
+                <div className="flex items-center justify-between mb-1">
+                  <div className="font-cinzel text-lg text-gold-gradient font-bold">
+                    {pillar.pts}
+                  </div>
+                  {pillar.isReferral && (
+                    <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-[#352313] text-[#ffd700] border border-[#ffd700]/40">
+                      EXCLUSIVE
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-sm font-semibold text-white tracking-wide mb-1">
+                  {pillar.title}
+                </h3>
+                <p className="text-xs text-[#b8ac9c] font-light leading-relaxed">
+                  {pillar.desc}
+                </p>
               </div>
-              <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-1">
-                {pillar.title}
-              </h4>
-              <p className="text-[11px] text-[#938573] font-light leading-relaxed">
-                {pillar.desc}
-              </p>
+
+              {pillar.isReferral && onOpenReferral && (
+                <button
+                  type="button"
+                  id="rewards-refer-pillar-btn"
+                  onClick={onOpenReferral}
+                  className="mt-4 w-full py-2 px-3 rounded-xl bg-gradient-to-r from-[#c5a059] to-[#dfba73] hover:from-[#dfba73] hover:to-[#ffd700] text-black text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+                >
+                  <span>Generate Link (+500)</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              )}
             </div>
           ))}
         </div>

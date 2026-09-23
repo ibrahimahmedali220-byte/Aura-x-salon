@@ -6,6 +6,7 @@ import { SERVICES_DATA, STYLISTS_DATA, VIP_PACKAGES, SALON_INFO } from '../data/
 import { SalonService, Stylist, VIPPackage } from '../types';
 import { Card3D } from './Card3D';
 import { getBeautyArchive, addTreatmentRecord, updatePreferredStylist } from '../utils/archiveStorage';
+import { simulateFriendBooking } from '../utils/rewardsStorage';
 import { FlowerRain } from './FlowerRain';
 import { sanitizeInput, sanitizeEmail, sanitizePhone, isSafePayload, rateLimiter } from '../utils/security';
 
@@ -127,7 +128,7 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
     }
   }, [appliedPrivilegeCode]);
 
-  const discountAmount = appliedPromo === 'AURA-GOLD'
+  const discountAmount = appliedPromo === 'AURA-GOLD' || appliedPromo?.startsWith('AURA-VIP-') || appliedPromo?.startsWith('REF-')
     ? 50
     : appliedPromo?.startsWith('AD-GIFT-')
     ? 100
@@ -140,8 +141,8 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
     e.preventDefault();
     setPromoError(null);
     const clean = promoCodeInput.trim().toUpperCase();
-    if (clean === 'AURA-GOLD') {
-      setAppliedPromo('AURA-GOLD');
+    if (clean === 'AURA-GOLD' || clean.startsWith('AURA-VIP-') || clean.startsWith('REF-')) {
+      setAppliedPromo(clean);
       setBeverage('champagne');
       setPromoCodeInput('');
     } else if (clean.startsWith('AD-GIFT-') || clean.startsWith('GIFT')) {
@@ -262,6 +263,15 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
       });
     } catch (err) {
       console.error('Could not save to Beauty Archive:', err);
+    }
+
+    // If booking was placed with a companion referral code, award +500 Crown Points to referrer
+    if (appliedPromo && (appliedPromo.startsWith('AURA-VIP-') || appliedPromo.startsWith('REF-'))) {
+      try {
+        simulateFriendBooking(undefined, cleanName);
+      } catch (refErr) {
+        console.error('Referral points credit error:', refErr);
+      }
     }
 
     // Delay slightly for smooth transition and trigger 2-second Flower Petals confetti
@@ -554,13 +564,13 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                         />
                       </div>
                       {phoneError ? (
-                        <p className="mt-1.5 text-[11px] text-rose-400 font-medium flex items-center gap-1.5 animate-pulse">
+                        <p className="mt-1.5 text-xs text-rose-400 font-medium flex items-center gap-1.5">
                           <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                           <span>{phoneError}</span>
                         </p>
                       ) : (
-                        <p className="mt-1 text-[10px] text-[#7d6f5f]">
-                          कम से कम 10 अंकों का वैध मोबाइल नंबर दर्ज करें
+                        <p className="mt-1 text-xs text-[#b8ac9c]">
+                          कम से कम 10 अंकों का वैध मोबाइल नंबर दर्ज करें (Please enter a valid 10-digit mobile number)
                         </p>
                       )}
                     </div>

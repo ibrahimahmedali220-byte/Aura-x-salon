@@ -101,14 +101,14 @@ export const GiftVoucherSection: React.FC = () => {
                       key={item.value}
                       type="button"
                       onClick={() => setAmount(item.value)}
-                      className={`p-3.5 rounded-2xl border text-center transition-all cursor-pointer ${
+                      className={`p-3.5 rounded-2xl border text-center transition-all cursor-pointer flex flex-col justify-center items-center min-h-[72px] ${
                         amount === item.value
                           ? 'bg-gold-gradient text-black border-transparent font-bold shadow-[0_0_20px_rgba(197,160,89,0.3)]'
                           : 'bg-[#1a140e] text-[#c9bfae] border-[#36291a] hover:border-[#c5a059]/40'
                       }`}
                     >
                       <span className="text-base font-cinzel block">${item.value}</span>
-                      <span className="text-[9px] uppercase tracking-wider block opacity-90 truncate">{item.label}</span>
+                      <span className="text-xs tracking-wide block opacity-90 leading-tight whitespace-normal break-words mt-1">{item.label}</span>
                     </button>
                   ))}
                 </div>
@@ -203,7 +203,7 @@ export const GiftVoucherSection: React.FC = () => {
                       <span className="font-cinzel text-xs tracking-widest font-bold text-white block">
                         AURA & D'OR
                       </span>
-                      <span className="text-[8px] uppercase tracking-[0.25em] text-[#c5a059] block">
+                      <span className="text-xs uppercase tracking-[0.15em] text-[#c5a059] block">
                         BEVERLY HILLS ATELIER
                       </span>
                     </div>
@@ -216,28 +216,28 @@ export const GiftVoucherSection: React.FC = () => {
 
                 {/* Card Center Inscription */}
                 <div className="relative z-10 space-y-1">
-                  <span className="text-[9px] uppercase tracking-widest text-[#a89b88] block">
+                  <span className="text-xs uppercase tracking-widest text-[#a89b88] block">
                     HONORED RECIPIENT
                   </span>
                   <div className="font-cormorant text-2xl sm:text-3xl text-white font-medium italic truncate">
                     {recipient || 'Honored Guest'}
                   </div>
-                  <p className="text-[11px] text-[#c4b5a2] font-light line-clamp-2 italic leading-relaxed pt-1">
+                  <p className="text-xs text-[#c4b5a2] font-light line-clamp-2 italic leading-relaxed pt-1">
                     "{note}"
                   </p>
                 </div>
 
                 {/* Card Bottom Meta */}
-                <div className="flex items-end justify-between pt-3 border-t border-[#3b2d1c] relative z-10 text-[10px]">
+                <div className="flex items-end justify-between pt-3 border-t border-[#3b2d1c] relative z-10 text-xs">
                   <div>
-                    <span className="text-[#8c7f6e] uppercase tracking-widest block text-[8px]">
+                    <span className="text-[#a89b88] uppercase tracking-wider block text-xs">
                       PRESENTED BY
                     </span>
                     <span className="text-white font-medium">{sender || 'A Patron'}</span>
                   </div>
 
                   <div className="text-right">
-                    <span className="text-[#8c7f6e] uppercase tracking-widest block text-[8px]">
+                    <span className="text-[#a89b88] uppercase tracking-wider block text-xs">
                       OCCASION
                     </span>
                     <span className="text-[#c5a059] font-medium">{occasion}</span>
